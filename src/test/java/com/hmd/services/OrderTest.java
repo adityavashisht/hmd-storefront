@@ -4,9 +4,7 @@ package com.hmd.services;
  * Created by vashishta on 9/1/16.
  */
 
-import com.halalmeatdepot.domain.Customer;
-import com.halalmeatdepot.domain.Order;
-import com.halalmeatdepot.domain.OrderItem;
+import com.halalmeatdepot.domain.*;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,14 +36,27 @@ public class OrderTest {
 
 
     @Test
-    @Rollback( value = false)
+    @Rollback(value = false)
     public void testOrder() {
 
-        Order order= new Order();
+        Order order = new Order();
         order.setCreateDate(LocalDateTime.now());
 
         Customer customer = new Customer();
         customer.setEmail("aditya@indasil.com");
+
+        Address shipping = new Address();
+        shipping.setAddressType(AddressType.SHIPPING);
+        shipping.setCity("Chantilly");
+        shipping.setStreet("Test Street");
+        customer.getAddressSet().add(shipping);
+
+        Address billing = new Address();
+        billing.setAddressType(AddressType.BILLING);
+        billing.setCity("Billing City");
+        billing.setStreet("Test Street Billing");
+        customer.getAddressSet().add(billing);
+
 
         Session s = sessionFactory.getCurrentSession();
        /* s.setHibernateFlushMode(FlushMode.MANUAL);
@@ -58,9 +69,7 @@ public class OrderTest {
         order.setCustomer(customer);
 
 
-
-
-        OrderItem orderItem= new OrderItem();
+        OrderItem orderItem = new OrderItem();
         orderItem.setGiftWrap(true);
         // Tell the child who the parent is
         orderItem.setOrder(order);
@@ -70,10 +79,18 @@ public class OrderTest {
         // Add the child to the collection of children
         order.addItem(orderItem);
 
+        OrderItem orderItemTwo = new OrderItem();
+        orderItemTwo.setGiftWrap(true);
+        // Tell the child who the parent is
+        orderItemTwo.setOrder(order);
+        orderItemTwo.setQuantity(2);
+
+
+        // Add the child to the collection of children
+        order.addItem(orderItemTwo);
+
 
         s.save(order);
-
-
 
 
     }

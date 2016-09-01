@@ -2,8 +2,10 @@ package com.halalmeatdepot.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+
+import java.util.List;
+
 
 /**
  * Created by vashishta on 8/30/16.
@@ -14,6 +16,7 @@ public class Order implements Serializable {
     private Customer customer;
     private LocalDateTime createDate;
 
+
     public LocalDateTime getCreateDate() {
         return createDate;
     }
@@ -22,13 +25,13 @@ public class Order implements Serializable {
         this.createDate = createDate;
     }
 
-    private Set<OrderItem> orderItemSet= new HashSet<>();
+    private List<OrderItem> orderItemSet= new ArrayList<>();
 
-    public Set<OrderItem> getOrderItemSet() {
+    public List<OrderItem> getOrderItemSet() {
         return orderItemSet;
     }
 
-    public void setOrderItemSet(Set<OrderItem> orderItemSet) {
+    public void setOrderItemSet(List<OrderItem> orderItemSet) {
         this.orderItemSet = orderItemSet;
     }
 

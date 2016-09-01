@@ -1,5 +1,8 @@
 package com.halalmeatdepot.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by vashishta on 8/30/16.
  */
@@ -9,7 +12,15 @@ public class Customer {
     private String lastName;
     private String email;
 
+    private Set<Address> addressSet = new HashSet<>();
 
+    public Set<Address> getAddressSet() {
+        return addressSet;
+    }
+
+    public void setAddressSet(Set<Address> addressSet) {
+        this.addressSet = addressSet;
+    }
     public Long getId() {
         return id;
     }

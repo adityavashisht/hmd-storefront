@@ -11,13 +11,19 @@
         </id>
 
         <many-to-one name="customer"
-                     class="com.halalmeatdepot.domain.Customer" column="CUSTOMER_ID" not-null="true" cascade="save-update"/>
+                     class="com.halalmeatdepot.domain.Customer"
+                     column="CUSTOMER_ID"
+                     not-null="true"
+                     cascade="save-update"/>
 
 
-        <set name="orderItemSet" cascade="all" inverse="true">
+        <!-- Inverse means bi-directional association -->
+
+        <list name="orderItemSet" cascade="all" inverse="true">
             <key column="ORDER_ID"/>
+            <index column="ITEM_ENTRY" type="integer"/>
             <one-to-many class="com.halalmeatdepot.domain.OrderItem"/>
-        </set>
+        </list>
 
         <property name="createDate" column="CREATE_DATE" not-null="true"/>
 
