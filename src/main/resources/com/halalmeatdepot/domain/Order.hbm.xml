@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.halalmeatdepot.domain.Order" table="CUSTOMER_ORDER">
+        <id name="id" column="ORDER_ID" type="long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">ORDER_SEQ</param>
+            </generator>
+        </id>
+
+        <many-to-one name="customer"
+                     class="com.halalmeatdepot.domain.Customer" column="CUSTOMER_ID" not-null="true" cascade="save-update"/>
+
+
+        <set name="orderItemSet" cascade="all" inverse="true">
+            <key column="ORDER_ID"/>
+            <one-to-many class="com.halalmeatdepot.domain.OrderItem"/>
+        </set>
+
+        <property name="createDate" column="CREATE_DATE" not-null="true"/>
+
+
+    </class>
+
+
+</hibernate-mapping>

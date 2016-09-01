@@ -24,6 +24,8 @@
         <property name="mappingResources">
             <list>
                 <value>com/halalmeatdepot/domain/Customer.hbm.xml</value>
+                <value>com/halalmeatdepot/domain/Order.hbm.xml</value>
+                <value>com/halalmeatdepot/domain/OrderItem.hbm.xml</value>
             </list>
         </property>
 
