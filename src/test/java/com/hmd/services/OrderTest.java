@@ -5,6 +5,7 @@ package com.hmd.services;
  */
 
 import com.halalmeatdepot.domain.*;
+import com.halalmeatdepot.service.OrderService;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,11 +35,23 @@ public class OrderTest {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private OrderService orderService;
+
 
     @Test
     @Rollback(value = false)
     public void testOrder() {
 
+        Order order = createNew();
+        Session s = sessionFactory.getCurrentSession();
+
+        s.save(order);
+
+
+    }
+
+    private Order createNew() {
         Order order = new Order();
         order.setCreateDate(LocalDateTime.now());
 
@@ -56,14 +69,6 @@ public class OrderTest {
         billing.setCity("Billing City");
         billing.setStreet("Test Street Billing");
         customer.getAddressSet().add(billing);
-
-
-        Session s = sessionFactory.getCurrentSession();
-       /* s.setHibernateFlushMode(FlushMode.MANUAL);
-
-        s.save(customer);
-
-         s.flush();*/
 
 
         order.setCustomer(customer);
@@ -89,9 +94,16 @@ public class OrderTest {
         // Add the child to the collection of children
         order.addItem(orderItemTwo);
 
-
-        s.save(order);
-
-
+        return order;
     }
+
+
+    @Test
+    @Rollback(value = false)
+    public void testCreateNewFromService() {
+        Order order = createNew();
+        orderService.create(order);
+    }
+
+
 }
