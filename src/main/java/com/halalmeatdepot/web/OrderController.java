@@ -42,6 +42,7 @@ public class OrderController {
     @RequestMapping(method= RequestMethod.POST)
     public String save(@ModelAttribute ("orderForm") OrderForm orderForm) {
 
+        orderForm.setUpForSave();
         orderService.create(orderForm.getOrder());
 
         return "order";

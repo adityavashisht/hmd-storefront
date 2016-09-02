@@ -9,6 +9,7 @@
                 <param name="sequence_name">ORDER_ITEM_SEQ</param>
             </generator>
         </id>
+        <property name="itemName" column="ITEM_NAME" type="string" length="255"/>
 
         <property name="giftWrap" type="yes_no" column="GIFT_WRAP_FLAG" not-null="false"/>
         <property name="quantity" column="QUANTITY" not-null="true"/>

@@ -78,6 +78,7 @@ public class OrderTest {
         orderItem.setGiftWrap(true);
         // Tell the child who the parent is
         orderItem.setOrder(order);
+        orderItem.setItemName("Shoes");
         orderItem.setQuantity(2);
 
 
@@ -86,6 +87,7 @@ public class OrderTest {
 
         OrderItem orderItemTwo = new OrderItem();
         orderItemTwo.setGiftWrap(true);
+        orderItemTwo.setItemName("Clothes");
         // Tell the child who the parent is
         orderItemTwo.setOrder(order);
         orderItemTwo.setQuantity(2);

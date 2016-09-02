@@ -11,6 +11,15 @@ public class OrderItem {
     private Order order;
     private boolean giftWrap;
     private Integer quantity;
+    private String itemName;
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
 
     public Integer getQuantity() {
         return quantity;
