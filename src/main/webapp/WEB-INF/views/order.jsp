@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form:form name="orderForm" modelAttribute="orderForm">
+            <form:form id="orderForm" name="orderForm" modelAttribute="orderForm">
 
 
 
@@ -84,8 +84,12 @@
 
                 <hr/>
                 <div class="row" style="margin-top:20px;">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-6 text-center">
                         <input type="submit" value="Save and Preview Order" class="btn btn-success btn-large"/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <button type="button" id="ajax" class="btn btn-danger">Show Ajax</button>
                     </div>
                 </div>
 
@@ -96,6 +100,32 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $(function() {
+
+
+        $("#ajax").click(function() {
+            var URL ="<spring:url value="/order/ajax"/>";
+            var postData = $("#orderForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: URL,
+                contentType: "application/x-www-form-urlencoded",
+                data: postData,
+                success: function (data) {
+                    alert(data.state);
+                },
+                error : function(data) {
+                }
+            });
+
+        });
+
+
+    });
+</script>
 
 
 <%@include file="footer.jsp" %>

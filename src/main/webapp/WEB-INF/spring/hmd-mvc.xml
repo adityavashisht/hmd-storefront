@@ -10,19 +10,7 @@
 
     <context:component-scan base-package="com.halalmeatdepot.web" />
     <mvc:annotation-driven>
-
         <mvc:message-converters>
-            <bean id="byteArrayMessageConverter"
-                  class="org.springframework.http.converter.ByteArrayHttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <bean class="org.springframework.http.MediaType">
-                            <constructor-arg value="application"/>
-                            <constructor-arg value="pdf"/>
-                        </bean>
-                    </list>
-                </property>
-            </bean>
             <bean class="org.springframework.http.converter.json.GsonHttpMessageConverter"/>
         </mvc:message-converters>
     </mvc:annotation-driven>
@@ -33,7 +21,8 @@
         <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
     </bean>
 
-    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="mediaTypes">
             <value>
                 xml=application/xml

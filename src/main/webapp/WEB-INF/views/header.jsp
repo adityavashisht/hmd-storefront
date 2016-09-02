@@ -15,6 +15,9 @@
     <link href="<spring:url value="/ui/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet"/>
 
 
+    <script src="<spring:url value="/ui/jquery/jquery.js"/>"></script>
+    <script src="<spring:url value="/ui/bootstrap/js/bootstrap.min.js"/>"></script>
+
 </head>
 
 <body>
