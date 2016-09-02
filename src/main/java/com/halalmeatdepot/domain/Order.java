@@ -13,7 +13,7 @@ import java.util.List;
 public class Order implements Serializable {
 
     private Long id;
-    private Customer customer;
+    private Customer customer = new Customer();
     private LocalDateTime createDate;
 
 
@@ -69,5 +69,15 @@ public class Order implements Serializable {
     @Override
     public int hashCode() {
         return getId() != null ? getId().hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", createDate=" + createDate +
+                ", orderItemSet=" + orderItemSet +
+                '}';
     }
 }

@@ -8,7 +8,7 @@
 
     <tx:annotation-driven/>
 
-    <context:component-scan base-package="com.halalmeatdepot"/>
+    <context:component-scan base-package="com.halalmeatdepot.service"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
@@ -38,7 +38,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</prop>
                 <prop key="cache.use_second_level_cache">false</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
             </props>
         </property>
     </bean>
