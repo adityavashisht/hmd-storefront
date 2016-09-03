@@ -42,8 +42,19 @@ public class OrderTest {
         Order order = new Order();
         order.setCreateDate(LocalDateTime.now());
 
+        Phone phone = new Phone();
+        phone.setHome("1121212121");
+        phone.setMobile("2324232423432");
+        phone.setWork("13234343");
+
+        CustomerProfile customerProfile = new CustomerProfile();
+        customerProfile.setPhone(phone);
+
+
         Customer customer = new Customer();
         customer.setEmail("aditya@indasil.com");
+        customer.setCustomerProfile(customerProfile);
+        customerProfile.setCustomer(customer);
 
         Address shipping = new Address();
         shipping.setAddressType(AddressType.SHIPPING);
@@ -92,6 +103,22 @@ public class OrderTest {
 
         s.save(order);
 
+        customerProfile.setId(customer.getId());
+        s.save(customerProfile);
+
 
     }
+
+    @Test
+    public void testGetCustomer() {
+        Session session = sessionFactory.getCurrentSession();
+        Customer customer = session.load(Customer.class, 1L);
+
+        CustomerProfile customerProfile = customer.getCustomerProfile();
+        System.out.println(customerProfile);
+
+
+    }
+
+
 }

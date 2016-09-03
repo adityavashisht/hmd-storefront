@@ -12,6 +12,10 @@ public class Customer {
     private String lastName;
     private String email;
 
+    private CustomerProfile customerProfile;
+
+
+
     private Set<Address> addressSet = new HashSet<>();
 
     public Set<Address> getAddressSet() {
@@ -21,6 +25,15 @@ public class Customer {
     public void setAddressSet(Set<Address> addressSet) {
         this.addressSet = addressSet;
     }
+
+    public CustomerProfile getCustomerProfile() {
+        return customerProfile;
+    }
+
+    public void setCustomerProfile(CustomerProfile customerProfile) {
+        this.customerProfile = customerProfile;
+    }
+
     public Long getId() {
         return id;
     }

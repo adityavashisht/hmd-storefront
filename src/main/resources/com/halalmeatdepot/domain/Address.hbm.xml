@@ -13,6 +13,7 @@
 
         <property name="street" column="STREET" type="string" length="255" not-null="true"/>
         <property name="city" column="CITY" type="string" length="255" not-null="true"/>
+        <property name="primary" column="PRIMARY_FLAG" type="yes_no"/>
 
         <property name="addressType" column="ADDRESS_TYPE" not-null="true">
             <type name="org.hibernate.type.EnumType">

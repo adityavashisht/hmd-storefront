@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="com.halalmeatdepot.domain.CustomerProfile" table="CUSTOMER_PROFILE">
+
+
+    <id name="id" type="java.lang.Long">
+        <column name="CUSTOMER_ID"/>
+        <generator class="assigned"/>
+    </id>
+
+
+    <component name="phone" class="com.halalmeatdepot.domain.Phone">
+        <property name="home" column="HOME_PHONE"/>
+        <property name="work" column="WORK_PHONE"/>
+        <property name="mobile" column="MOBILE_PHONE"/>
+    </component>
+
+
+</class>
+
+</hibernate-mapping>

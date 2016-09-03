@@ -12,10 +12,15 @@
 
         <property name="email" column="EMAIL" type="string" length="255" not-null="true"/>
 
-        <set name="addressSet" cascade="all-delete-orphan" inverse="true">
+        <set name="addressSet" cascade="all-delete-orphan" inverse="true" lazy="false">
             <key column="CUSTOMER_ID"/>
             <one-to-many class="com.halalmeatdepot.domain.Address"/>
         </set>
+        
+        <one-to-one name="customerProfile"
+                    class="com.halalmeatdepot.domain.CustomerProfile"
+                    lazy="false"
+                    constrained="false"/>
 
     </class>
 

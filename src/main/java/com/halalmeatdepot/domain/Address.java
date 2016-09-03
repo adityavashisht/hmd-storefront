@@ -8,8 +8,18 @@ public class Address {
     private Long id;
     private String street;
     private String city;
+    private boolean primary;
 
     private AddressType addressType;
+
+
+    public boolean isPrimary() {
+        return primary;
+    }
+
+    public void setPrimary(boolean primary) {
+        this.primary = primary;
+    }
 
     public AddressType getAddressType() {
         return addressType;
