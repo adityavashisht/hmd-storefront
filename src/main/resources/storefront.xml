@@ -28,6 +28,11 @@
                 <value>com/halalmeatdepot/domain/Address.hbm.xml</value>
                 <value>com/halalmeatdepot/domain/Order.hbm.xml</value>
                 <value>com/halalmeatdepot/domain/OrderItem.hbm.xml</value>
+
+                <!-- Employee / Project many/many -->
+
+                <value>com/halalmeatdepot/domain/mm/Employee.hbm.xml</value>
+                <value>com/halalmeatdepot/domain/mm/Project.hbm.xml</value>
             </list>
         </property>
 
@@ -36,7 +41,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</prop>
                 <prop key="cache.use_second_level_cache">false</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
             </props>
         </property>
     </bean>
