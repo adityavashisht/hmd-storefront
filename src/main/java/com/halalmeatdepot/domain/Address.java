@@ -1,10 +1,14 @@
 package com.halalmeatdepot.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by vashishta on 9/1/16.
  */
+@Entity
+@Table ( name="ADDRESS")
 public class Address {
 
     private Long id;
