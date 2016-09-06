@@ -31,4 +31,49 @@
     </class>
 
 
+    <query name="query.getOrderByFirstAndLastName">
+
+        from Order as o
+        where o.customer.firstName= :firstName
+        and o.customer.lastName= :lastName
+
+
+    </query>
+
+    <query name="query.getOrderByFirstAndLastNameWithNew">
+        select new com.halalmeatdepot.dto.OrderDTO (o.id, o.customer.firstName, o.customer.lastName)
+        from Order as o
+        where o.customer.firstName= :firstName
+        and o.customer.lastName= :lastName
+    </query>
+
+
+    <!-- This will return a list with each item in the list as an array of objects -->
+    <!-- The object array index matches the order in which th from clause delcares the association for a join -->
+    <query name="query.getWithObjects">
+        from Order o, Customer c
+        where
+        o.customer.id = c.id
+        and
+        o.customer.firstName=?
+    </query>
+
+    <sql-query name="sql.getOrderByFirstAndLastName">
+
+        select
+        order0_.ORDER_ID as ORDER_ID1_3_,
+        order0_.CUSTOMER_ID as CUSTOMER2_3_,
+        order0_.CREATE_DATE as CREATE_D3_3_
+        from
+        CUSTOMER_ORDER order0_ cross
+        join
+        CUSTOMER customer1_
+        where
+        order0_.CUSTOMER_ID=customer1_.CUSTOMER_ID
+        and customer1_.FIRST_NAME=?
+        and customer1_.LAST_NAME=?
+
+    </sql-query>
+
+
 </hibernate-mapping>

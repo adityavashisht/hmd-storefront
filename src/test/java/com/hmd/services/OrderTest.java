@@ -5,9 +5,13 @@ package com.hmd.services;
  */
 
 import com.halalmeatdepot.domain.*;
+import com.halalmeatdepot.dto.OrderDTO;
 import org.hibernate.FlushMode;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +19,12 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by vashishta on 8/30/16.
@@ -54,6 +61,10 @@ public class OrderTest {
 
         Customer customer = new Customer();
         customer.setEmail("aditya@indasil.com");
+        customer.setFirstName("Aditya");
+        customer.setLastName("Vashisht");
+
+
         customer.setCustomerProfile(customerProfile);
         customerProfile.setCustomer(customer);
 
@@ -123,6 +134,106 @@ public class OrderTest {
         CustomerProfile customerProfile = customer.getCustomerProfile();
         System.out.println(customerProfile);
 
+
+    }
+
+    @Test
+    public void testGetOrderByCustomerFirstName() {
+
+        Session session = sessionFactory.getCurrentSession();
+
+
+        Query query = session.createQuery("from Order as o where o.customer.firstName=?");
+        query.setParameter(0, "Aditya");
+
+        List<Order> orderList = query.list();
+
+        for (Order order : orderList) {
+            System.out.println(order.getCustomer().getFirstName());
+        }
+
+
+    }
+
+    @Test
+    public void testGetOrderByCustomerFirstNameAndLastNameUsingNamedQuery() {
+
+        Session session = sessionFactory.getCurrentSession();
+
+
+        Query query = session.getNamedQuery("query.getOrderByFirstAndLastName");
+        query.setParameter("firstName", "Aditya");
+        query.setParameter("lastName", "Vashisht");
+
+
+        List<Order> orderList = query.list();
+
+        for (Order order : orderList) {
+            System.out.println(order.getCustomer().getFirstName());
+        }
+
+
+    }
+
+    @Test
+    public void testWithObjects() {
+        Session session = sessionFactory.getCurrentSession();
+
+
+        Query query = session.getNamedQuery("query.getWithObjects");
+        query.setParameter(0, "Aditya");
+
+
+        List<Object[]> orderList = query.list();
+
+        for (Object[] order : orderList) {
+            for(Object o : order) {
+                if(o instanceof Order) {
+                    System.out.println("Order Id " + ((Order) o).getId());
+                }
+                if(o instanceof Customer) {
+                    System.out.println("Name " + ((Customer) o).getFirstName());
+                }
+            }
+        }
+
+
+    }
+
+
+    @Test
+    public void testGetOrderByCustomerFirstNameAndLastNameUsingNamedQueryWithDTO() {
+
+        Session session = sessionFactory.getCurrentSession();
+
+
+        Query query = session.getNamedQuery("query.getOrderByFirstAndLastNameWithNew");
+        query.setParameter("firstName", "Aditya");
+        query.setParameter("lastName", "Vashisht");
+
+
+        List<OrderDTO> orderList = query.list();
+
+        for (OrderDTO order : orderList) {
+            System.out.println(order.getFirstName());
+        }
+
+
+    }
+
+    @Test
+    public void testGetOrderNativeSQL() {
+
+        Session session = sessionFactory.getCurrentSession();
+
+        NativeQuery nativeQuery = session.getNamedNativeQuery("sql.getOrderByFirstAndLastName");
+        nativeQuery.setParameter(0, "Aditya");
+        nativeQuery.setParameter(1, "Vashisht");
+
+        List<Object> results = nativeQuery.list();
+        for (Object o : results) {
+            System.out.println(o);
+        }
 
     }
 
