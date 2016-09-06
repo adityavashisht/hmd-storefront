@@ -1,4 +1,4 @@
-package com.halalmeatdepot.domain.design;
+package com.halalmeatdepot.domain.design.tpsc;
 
 import java.util.Date;
 

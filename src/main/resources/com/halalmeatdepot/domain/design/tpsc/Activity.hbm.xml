@@ -4,7 +4,7 @@
 <hibernate-mapping>
 
 
-    <class name="com.halalmeatdepot.domain.design.Activity" table="ACTIVITY">
+    <class name="com.halalmeatdepot.domain.design.tpsc.Activity" table="ACTIVITY">
         <id name="id" column="ACTIVITY_ID" type="long">
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
                 <param name="sequence_name">ACT_SEQ</param>
@@ -15,7 +15,7 @@
         <property name="updateDate" column="UPDATE_DATE"/>
 
 
-        <joined-subclass name="com.halalmeatdepot.domain.design.UpActivity" table="UP_ACTIVITY">
+        <joined-subclass name="com.halalmeatdepot.domain.design.tpsc.UpActivity" table="UP_ACTIVITY">
             <key>
                 <column name="ACTIVITY_ID"/>
             </key>
@@ -23,7 +23,7 @@
             <property name="selectDate" column="SELECT_DATE"/>
         </joined-subclass>
 
-        <joined-subclass name="com.halalmeatdepot.domain.design.DownActivity" table="DOWN_ACTIVITY">
+        <joined-subclass name="com.halalmeatdepot.domain.design.tpsc.DownActivity" table="DOWN_ACTIVITY">
             <key>
                 <column name="ACTIVITY_ID"/>
 

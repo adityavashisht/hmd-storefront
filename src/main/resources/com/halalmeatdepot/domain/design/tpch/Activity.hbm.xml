@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.halalmeatdepot.domain.design.tpch">
+
+
+    <class name="Activity"
+
+           table="HIERARCHY_ACTIVITY">
+        <id name="id" column="ACTIVITY_ID" type="long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">ACT_SEQ</param>
+            </generator>
+        </id>
+
+        <discriminator column="DISCRIMINATOR" type="string" />
+
+        <property name="createDate" column="CREATE_DATE"/>
+        <property name="updateDate" column="UPDATE_DATE"/>
+
+
+    </class>
+
+    <subclass name="UpActivity"
+              extends="Activity" discriminator-value="U">
+        <property name="name" column="NAME"/>
+        <property name="selectDate" column="SELECT_DATE"/>
+    </subclass>
+
+    <subclass name="DownActivity"
+              extends="Activity" discriminator-value="D">
+        <property name="name" column="NAME"/>
+        <property name="signal" type="yes_no"/>
+    </subclass>
+
+
+</hibernate-mapping>

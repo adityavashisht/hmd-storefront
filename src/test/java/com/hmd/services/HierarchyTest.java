@@ -1,7 +1,7 @@
 package com.hmd.services;
 
-import com.halalmeatdepot.domain.design.tpsc.DownActivity;
-import com.halalmeatdepot.domain.design.tpsc.UpActivity;
+import com.halalmeatdepot.domain.design.tpch.DownActivity;
+import com.halalmeatdepot.domain.design.tpch.UpActivity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import java.util.Date;
 })
 
 @Transactional
-public class ActivityTest {
+public class HierarchyTest {
 
 
     @Autowired
@@ -53,6 +53,7 @@ public class ActivityTest {
         DownActivity downActivity = new DownActivity();
         downActivity.setName("New Down Activity");
 
+
         downActivity.setCreateDate(new Date());
         downActivity.setSignal(true);
 
@@ -62,9 +63,9 @@ public class ActivityTest {
 
 
     }
-
-
-
+    
+    
+    
 
 
 }

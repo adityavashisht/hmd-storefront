@@ -35,7 +35,8 @@
                 <value>com/halalmeatdepot/domain/mm/Project.hbm.xml</value>
 
                 <!-- Table per sub class -->
-                <value>com/halalmeatdepot/domain/design/Activity.hbm.xml</value>
+                <value>com/halalmeatdepot/domain/design/tpsc/Activity.hbm.xml</value>
+                <value>com/halalmeatdepot/domain/design/tpch/Activity.hbm.xml</value>
             </list>
         </property>
 

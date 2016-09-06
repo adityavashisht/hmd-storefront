@@ -1,4 +1,4 @@
-package com.halalmeatdepot.domain.design;
+package com.halalmeatdepot.domain.design.tpsc;
 
 /**
  * Created by vashishta on 9/6/16.
