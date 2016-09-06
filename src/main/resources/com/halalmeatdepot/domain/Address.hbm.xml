@@ -21,6 +21,9 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
+        <many-to-one name="customer" class="com.halalmeatdepot.domain.Customer" column="customer_id"/>
+
+        <property name="createDate" column="CREATE_DATE"/>
 
     </class>
 

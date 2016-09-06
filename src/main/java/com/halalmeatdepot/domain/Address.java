@@ -1,5 +1,7 @@
 package com.halalmeatdepot.domain;
 
+import java.util.Date;
+
 /**
  * Created by vashishta on 9/1/16.
  */
@@ -9,6 +11,24 @@ public class Address {
     private String street;
     private String city;
     private boolean primary;
+    private Date createDate;
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     private AddressType addressType;
 

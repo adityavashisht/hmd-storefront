@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by vashishta on 8/30/16.
@@ -57,16 +58,21 @@ public class OrderTest {
         customerProfile.setCustomer(customer);
 
         Address shipping = new Address();
+        shipping.setCustomer(customer);
         shipping.setAddressType(AddressType.SHIPPING);
         shipping.setCity("Chantilly");
         shipping.setStreet("Test Street");
-        customer.getAddressSet().add(shipping);
+        shipping.setCreateDate(new Date());
+        customer.addAddress(shipping);
+
 
         Address billing = new Address();
+        billing.setCustomer(customer);
         billing.setAddressType(AddressType.BILLING);
         billing.setCity("Billing City");
         billing.setStreet("Test Street Billing");
-        customer.getAddressSet().add(billing);
+        billing.setCreateDate(new Date());
+        customer.addAddress(billing);
 
 
         Session s = sessionFactory.getCurrentSession();

@@ -15,6 +15,10 @@ public class Customer {
     private CustomerProfile customerProfile;
 
 
+    public void addAddress(Address address) {
+        address.setCustomer(this);
+        getAddressSet().add(address);
+    }
 
     private Set<Address> addressSet = new HashSet<>();
 
