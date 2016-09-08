@@ -12,7 +12,7 @@
 
         <property name="giftWrap" type="yes_no" column="GIFT_WRAP_FLAG" not-null="false"/>
         <property name="quantity" column="QUANTITY" not-null="true"/>
-        <many-to-one name="getCustomerOrder" column="ORDER_ID" class="com.halalmeatdepot.domain.Order"/>
+        <many-to-one name="order" column="ORDER_ID" class="com.halalmeatdepot.domain.Order"/>
 
 
     </class>

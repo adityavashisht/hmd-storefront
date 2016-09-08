@@ -12,6 +12,7 @@ public class OrderItem {
     private boolean giftWrap;
     private Integer quantity;
 
+
     public Integer getQuantity() {
         return quantity;
     }

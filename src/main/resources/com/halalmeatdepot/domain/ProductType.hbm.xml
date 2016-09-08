@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.halalmeatdepot.domain.ProductType" table="PRODUCT_TYPE">
+
+        <!-- Enable cache on this element -->
+        <!--<cache usage="read-only" region="ProductTypeRegion"/>-->
+
+        <id name="id" column="PRODUCT_TYPE_ID" type="long">
+            <generator class="assigned"></generator>
+        </id>
+
+        <property name="name" column="NAME"/>
+        <property name="active" column="ACTIVE" type="yes_no"/>
+
+
+    </class>
+</hibernate-mapping>
