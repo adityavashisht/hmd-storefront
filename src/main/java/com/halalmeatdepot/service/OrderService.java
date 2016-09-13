@@ -1,9 +1,11 @@
 package com.halalmeatdepot.service;
 
 import com.halalmeatdepot.domain.Order;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,8 @@ public class OrderService {
      */
     public Order getById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        return (Order) session.load(Order.class,id);
+        Order order = session.load(Order.class,id);
+        Hibernate.initialize(order.getCustomer());
+        return order;
     }
 }
