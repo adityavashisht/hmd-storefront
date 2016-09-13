@@ -19,7 +19,7 @@
 
         <!-- Inverse means bi-directional association -->
 
-        <list name="orderItemSet" cascade="all" inverse="true">
+        <list name="orderItemSet" cascade="all-delete-orphan" inverse="true">
             <key column="ORDER_ID"/>
             <index column="ITEM_ENTRY" type="integer"/>
             <one-to-many class="com.halalmeatdepot.domain.OrderItem"/>
