@@ -7,18 +7,25 @@
 </head>
 <body>
 
+
+
+
 <form:form modelAttribute="registerForm"  method="post">
 
     <form:input path="customer.firstName"/>
+    <form:errors path="customer.firstName" cssClass="error" />
     <br/>
     <br/>
     <form:input path="customer.lastName"/>
+    <form:errors path="customer.lastName" cssClass="error" />
     <br/>
     <br/>
     <form:input path="customer.email"/>
+    <form:errors path="customer.email" cssClass="error" />
     <br/>
     <br/>
     <form:input path="customer.birthDate"/>
+    <form:errors path="customer.birthDate" cssClass="error" />
 
 
     <br/>

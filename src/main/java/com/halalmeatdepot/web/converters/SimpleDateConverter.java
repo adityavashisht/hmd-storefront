@@ -15,7 +15,13 @@ public class SimpleDateConverter implements Converter<String, LocalDateTime> {
 
 
     public LocalDateTime convert(String o) {
-        return toLocalDateTime(o);
+        LocalDateTime localDateTime = null;
+        try {
+            localDateTime = toLocalDateTime(o);
+        } catch (Exception ex) {
+
+        }
+        return localDateTime;
 
     }
 

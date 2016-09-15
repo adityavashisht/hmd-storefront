@@ -28,6 +28,12 @@
 
 
 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames" value="WEB-INF/i18n/messages"/>
+        <!-- Value of -1 means cache forever -->
+        <property name="cacheSeconds" value="-1"/>
+    </bean>
+
     <!-- Content Negotiating view resolver -->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1"/>
