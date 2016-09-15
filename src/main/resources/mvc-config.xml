@@ -15,9 +15,16 @@
     <context:component-scan base-package="com.halalmeatdepot.web"/>
 
 
+    <bean id="webBindingConversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.halalmeatdepot.web.converters.SimpleDateConverter"/>
+            </set>
+        </property>
+    </bean>
 
-    <mvc:annotation-driven/>
-
+    <mvc:annotation-driven conversion-service="webBindingConversionService"/>
 
 
 
@@ -43,10 +50,6 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
-
-
-
 
 
 </beans>

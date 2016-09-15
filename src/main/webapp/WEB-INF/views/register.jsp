@@ -11,9 +11,14 @@
 
     <form:input path="customer.firstName"/>
     <br/>
+    <br/>
     <form:input path="customer.lastName"/>
     <br/>
+    <br/>
     <form:input path="customer.email"/>
+    <br/>
+    <br/>
+    <form:input path="customer.birthDate"/>
 
 
     <br/>

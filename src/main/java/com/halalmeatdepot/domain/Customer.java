@@ -1,5 +1,6 @@
 package com.halalmeatdepot.domain;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +12,20 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
+    private LocalDateTime birthDate;
+
+
 
     private CustomerProfile customerProfile;
 
+
+    public LocalDateTime getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDateTime birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public void addAddress(Address address) {
         address.setCustomer(this);
