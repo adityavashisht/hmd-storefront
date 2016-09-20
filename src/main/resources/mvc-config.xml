@@ -24,7 +24,11 @@
         </property>
     </bean>
 
-    <mvc:annotation-driven conversion-service="webBindingConversionService"/>
+    <mvc:annotation-driven conversion-service="webBindingConversionService">
+        <mvc:argument-resolvers>
+            <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
 
 
 

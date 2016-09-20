@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <security:global-method-security secured-annotations="enabled"/>
+
+    <security:http create-session="ifRequired"
+                   authentication-manager-ref="authenticationManager"
+                   request-matcher="ant">
+
+        <security:intercept-url pattern="/login.jsp" access="isAnonymous()"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+        <security:form-login default-target-url="/order"
+                             login-page="/login.jsp"
+                             always-use-default-target="true"
+
+                             username-parameter="j_username"
+                             password-parameter="j_password"/>
+
+
+
+        <security:csrf disabled="true"/>
+        <security:request-cache ref="requestCache"/>
+
+    </security:http>
+
+    <security:authentication-manager id="authenticationManager">
+        <security:authentication-provider user-service-ref="jdbcUserDetailService">
+
+            <!--
+            <security:user-service >
+                 In memory provider
+                <security:user name="admin"
+                      password="admin"
+                      authorities="ROLE_ADMIN"/>
+
+
+            </security:user-service>
+            -->
+
+
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="jdbcUserDetailService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="requestCache" class="org.springframework.security.web.savedrequest.HttpSessionRequestCache"/>
+
+</beans>
