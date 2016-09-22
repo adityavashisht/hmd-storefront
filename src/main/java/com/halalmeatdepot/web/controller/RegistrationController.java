@@ -2,6 +2,7 @@ package com.halalmeatdepot.web.controller;
 
 import com.halalmeatdepot.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +33,11 @@ public class RegistrationController {
         registerValidator.validate(registerForm, result);
         if (!result.hasErrors()) {
             Customer customer = registerForm.getCustomer();
+
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+            String encoded = bCryptPasswordEncoder.encode(customer.getPassword());
+            customer.setPassword(encoded);
+
         }
 
 

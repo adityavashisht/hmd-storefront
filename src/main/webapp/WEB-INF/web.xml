@@ -6,6 +6,11 @@
 
 
     <!-- The master configuration file for this Spring web application -->
+    <!-- Security confifuration are always looked up at the "root" container level,
+    therefore must define the beans here in the context parameter
+
+    -->
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
