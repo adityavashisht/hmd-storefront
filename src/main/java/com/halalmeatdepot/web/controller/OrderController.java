@@ -43,12 +43,12 @@ public class OrderController {
         Object myUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Order order = null;
-        String view = "order/new";
+        String view = "new-order";// Matches the tile definition in tiles.xml
 
         if (id != null) {
             order = orderService.getById(id);
             model.addAttribute("order", order);
-            view = "order/view";
+            view = "view-order";
         } else {
 
         }
