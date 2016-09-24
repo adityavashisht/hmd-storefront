@@ -20,5 +20,9 @@
 
     </definition>
 
+    <definition name="register" extends="hmdLayout">
+        <put-attribute name="body" value="/WEB-INF/views/register.jsp"/>
+    </definition>
+
 
 </tiles-definitions>

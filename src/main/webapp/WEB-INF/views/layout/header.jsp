@@ -30,6 +30,16 @@
             padding: 40px 15px;
             text-align: center;
         }
+
+        .ajaxError {
+            -moz-user-select: none;
+            color: #b94a48;
+            direction: ltr;
+            position: absolute;
+            right: 20px;
+            top: 14px;
+            font-size: 0.95em;
+        }
     </style>
 </head>
 
